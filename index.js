@@ -24,9 +24,6 @@ module.exports = {
 
     this.whitelist = this.generateWhitelist(config);
     this.blacklist = this.generateBlacklist(config);
-    console.log('config: ', config);
-    console.log('blacklist: ', this.blacklist);
-    console.log('whitelist: ', this.whitelist);
   },
 
   treeForAddon: function(tree) {
@@ -69,8 +66,6 @@ module.exports = {
     var isWhitelisted = whitelist.indexOf(fileName) !== -1 || whitelist.indexOf(templateName) !== -1;
     var isBlacklisted = blacklist.indexOf(fileName) !== -1 || blacklist.indexOf(templateName) !== -1;
 
-    console.log('name: ', name);
-    console.log({isWhitelisted, isBlacklisted});
     // non-helper, don't exclude
     if (!isAddonHelper) {
       return false;
@@ -88,7 +83,6 @@ module.exports = {
 
     // only whitelist defined
     if (whitelist.length && blacklist.length === 0) {
-      console.log('included: ', !isWhitelisted);
       return !isWhitelisted;
     }
 
