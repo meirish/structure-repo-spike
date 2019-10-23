@@ -21,18 +21,22 @@ module.exports = {
 
     var addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
     var config = addonOptions[this.name] || {};
+
     this.whitelist = this.generateWhitelist(config);
     this.blacklist = this.generateBlacklist(config);
+    console.log('config: ', config);
+    console.log('blacklist: ', this.blacklist);
+    console.log('whitelist: ', this.whitelist);
   },
 
   treeForAddon: function(tree) {
-    tree = this.filterHelpers(tree, new RegExp(/^helpers\//, 'i'));
+    tree = this.filterHelpers(tree, new RegExp(/components\//, 'i'));
     tree = new StripBadReexports(tree, [`index.js`]);
     return this._super.treeForAddon.call(this, tree);
   },
 
   treeForApp: function(tree) {
-    tree = this.filterHelpers(tree, new RegExp(/^helpers\//, 'i'));
+    tree = this.filterHelpers(tree, new RegExp(/components\//, 'i'));
     return this._super.treeForApp.call(this, tree);
   },
 
@@ -60,10 +64,13 @@ module.exports = {
     var whitelist = lists.whitelist || [];
     var blacklist = lists.blacklist || [];
     var isAddonHelper = regex.test(name);
-    var helperName = path.basename(name, '.js');
-    var isWhitelisted = whitelist.indexOf(helperName) !== -1;
-    var isBlacklisted = blacklist.indexOf(helperName) !== -1;
+    var fileName = path.basename(name, '.js');
+    var templateName = path.basename(name, '.hbs');
+    var isWhitelisted = whitelist.indexOf(fileName) !== -1 || whitelist.indexOf(templateName) !== -1;
+    var isBlacklisted = blacklist.indexOf(fileName) !== -1 || blacklist.indexOf(templateName) !== -1;
 
+    console.log('name: ', name);
+    console.log({isWhitelisted, isBlacklisted});
     // non-helper, don't exclude
     if (!isAddonHelper) {
       return false;
@@ -81,6 +88,7 @@ module.exports = {
 
     // only whitelist defined
     if (whitelist.length && blacklist.length === 0) {
+      console.log('included: ', !isWhitelisted);
       return !isWhitelisted;
     }
 

@@ -21,12 +21,13 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.11.1",
-    "ember-cli-htmlbars": "^4.0.0",
     "@babel/core": "^7.0.0",
     "broccoli-funnel": "^2.0.2",
-    "resolve": "^1.10.0",
-    "ember-cli-babel": "^7.1.0"
+    "ember-basic-dropdown": "^1.0.0",
+    "ember-cli-babel": "^7.1.0",
+    "ember-cli-htmlbars": "^4.0.0",
+    "ember-svg-jar": "^2.2.3",
+    "resolve": "^1.10.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^1.0.0",

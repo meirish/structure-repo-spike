@@ -1,0 +1,1 @@
+export { default } from 'addon-test/components/popup-menu';
