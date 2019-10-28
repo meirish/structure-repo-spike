@@ -1,0 +1,37 @@
+{
+  "name": "addon-test",
+  "version": "0.0.0",
+  "description": "The default blueprint for ember-cli addons.",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "ember build",
+    "lint:hbs": "ember-template-lint .",
+    "lint:js": "eslint .",
+    "start": "ember serve",
+    "test": "ember test",
+    "test:all": "ember try:each"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "broccoli-funnel": "^2.0.2",
+    "ember-cli-babel": "^7.1.0",
+    "ember-cli-htmlbars": "^4.0.0",
+    "ember-svg-jar": "^2.2.3",
+    "resolve": "^1.10.0"
+  },
+  "engines": {
+    "node": "8.* || >= 10.*"
+  },
+  "ember-addon": {
+    "configPath": "tests/dummy/config"
+  }
+}
