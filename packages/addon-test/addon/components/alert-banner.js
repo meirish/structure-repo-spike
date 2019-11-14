@@ -1,7 +1,33 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { messageTypes } from 'core/helpers/message-types';
 import layout from '../templates/components/alert-banner';
+
+const messageTypes = {
+  info: {
+    class: 'is-info',
+    glyphClass: 'has-text-info',
+    glyph: 'info-circle-fill',
+    text: 'Info',
+  },
+  success: {
+    class: 'is-success',
+    glyphClass: 'has-text-success',
+    glyph: 'check-circle-fill',
+    text: 'Success',
+  },
+  danger: {
+    class: 'is-danger',
+    glyphClass: 'has-text-danger',
+    glyph: 'cancel-square-fill',
+    text: 'Error',
+  },
+  warning: {
+    class: 'is-highlight',
+    glyphClass: 'has-text-highlight',
+    glyph: 'alert-triangle',
+    text: 'Warning',
+  },
+};
 
 /**
  * @module AlertBanner
@@ -20,17 +46,17 @@ import layout from '../templates/components/alert-banner';
 
 export default Component.extend({
   layout,
-  type: null,
+  type: 'info',
   message: null,
   title: null,
   yieldWithoutColumn: false,
   classNameBindings: ['containerClass'],
 
   containerClass: computed('type', function() {
-    return 'message ' + messageTypes([this.get('type')]).class;
+    return 'message ' + messageTypes[this.type].class;
   }),
 
   alertType: computed('type', function() {
-    return messageTypes([this.get('type')]);
+    return messageTypes[this.type];
   }),
 });

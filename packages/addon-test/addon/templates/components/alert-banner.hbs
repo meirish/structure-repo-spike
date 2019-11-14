@@ -1,15 +1,19 @@
-<div class="alert-banner alert-banner-{{@type}}">
+
+<div data-test="foo">
   <div class="alert-banner-icon">
-    <icon
+    <Icon
       @size="l"
-      class="alert-banner-{{this.messageinfo.glyphclass}}"
       aria-hidden=true
       @glyph={{messageinfo.glyph}}
     />
   </div>
   <div class="alert-banner-message">
     <div class="alert-banner-message-title">
-      {{or @title @type}}
+      {{#if @title}}
+        {{@title}}
+      {{else}}
+        {{@type}}
+      {{/if}}
     </div>
     {{#if @message}}
       <p class="alert-banner-message-body">

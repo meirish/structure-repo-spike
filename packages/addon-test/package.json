@@ -22,16 +22,21 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
+    "@css-blocks/ember-cli": "^0.24.0",
     "broccoli-funnel": "^2.0.2",
     "ember-cli-babel": "^7.1.0",
     "ember-cli-htmlbars": "^4.0.0",
     "ember-svg-jar": "^2.2.3",
-    "resolve": "^1.10.0"
+    "resolve": "^1.10.0",
+    "sass": "^1.23.3"
   },
   "engines": {
     "node": "8.* || >= 10.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "before": [
+      "@css-blocks/ember-cli"
+    ]
   }
 }

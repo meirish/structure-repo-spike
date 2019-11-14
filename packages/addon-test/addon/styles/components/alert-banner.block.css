@@ -1,0 +1,13 @@
+:scope {
+  background: yellow;
+  border: 1px solid blue;
+  position: relative;
+}
+
+.alert-banner-icon {}
+.alert-banner-message {}
+.alert-banner-message-title {}
+.alert-banner-message-body {}
+.alert-banner-message-actions {
+  width: 200px;
+}
